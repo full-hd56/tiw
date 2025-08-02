@@ -1,0 +1,28 @@
+public class hub {
+    public hub(){
+
+    }
+    public int[][] infoArray (String str) {
+        String[] splitline = str.split("\n");  //sinificant
+        String[] ins = str.split(" ");
+        String str2 = str.replaceAll("\n", "");
+        String[] ins2 = str2.split(" ");
+
+        int n=splitline.length;
+
+        int col=n;
+        int row=(ins2.length)/n;
+        System.out.println("col:"+col);
+        System.out.println("row:"+row);
+        int[][] infoA = new int[col][row];
+        int count=0;
+        for(int i=0;i<col;i=i+1){
+            for(int j=0;j<row;j=j+1){
+                infoA[i][j]=Integer.parseInt(ins2[count]);
+                count=count+1;
+                System.out.println(infoA[i][j]+" "+count +"["+i+"]"+"["+j+"]");
+            }
+        }
+        return infoA;
+    }
+}
