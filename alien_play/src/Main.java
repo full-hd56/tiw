@@ -1,8 +1,6 @@
 
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     //192.168.1.39
     //int player_position;
@@ -12,8 +10,6 @@ public class Main {
         String server_ip;
         System.out.print("server ip = ");server_ip = scanf.next();
         System.out.print("position = ");int player_position = scanf.nextInt();
-
-
 
         //int player_position=1;
         GameOnline frame = new GameOnline();
@@ -25,9 +21,5 @@ public class Main {
         frame.add(background);
         frame.setVisible(true);
 
-       /* GameOnline frame = new GameOnline();
-        game_panel background = new game_panel();
-        frame.add(background);
-        frame.setVisible(true);*/
     }
 }
