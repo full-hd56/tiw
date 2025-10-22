@@ -1,4 +1,4 @@
-public class bullet/* extends Thread*/{
+public class bullet extends Thread{
 boolean active=true;
 int time=5;
 int index;
@@ -27,8 +27,8 @@ public bullet(int x1, int y1,run_base game,int x2, int y2){
     dx = Math.cos(Math.toRadians(angle));
     dy = Math.sin(Math.toRadians(angle));
     //run in
-    /*Thread t = new Thread(this);
-    t.start();*/
+    Thread t = new Thread(this);
+    t.start();
 }
 void move(){
     x = x+dx;
@@ -44,11 +44,11 @@ void check_end(){
         base.check_bullet();
     }*/
 }
-/*@Override
+@Override
 public void run() {
     while(active){
         move();
-        check_end();
+        //check_end();
         //base.check_bullet();
         try {
             Thread.sleep(time);
@@ -58,6 +58,5 @@ public void run() {
         }
 
     }
-}*/
 }
-
+}
