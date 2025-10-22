@@ -19,8 +19,6 @@ public class client {
         } catch (Exception e1) {
         }
     }
-    public static void main(String[] args) throws IOException {
-        client client = new client();
-        client.send("192.168.1.39", 40001, "abcdefg555");
-    }
 }
+
+
