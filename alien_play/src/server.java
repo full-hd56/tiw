@@ -11,9 +11,7 @@ import java.util.ArrayList;
 
 public class server {
     String in_server="";
-    //game_panel game_panel;
     server(game_panel game) {
-        //game_panel = game;
         try {
             InetAddress a = InetAddress.getLocalHost();
             System.out.println(a.getHostAddress());
@@ -26,10 +24,6 @@ public class server {
     public String get_info() {
         return in_server;
     }
-    /*public static void main(String[] args) {
-        server server = new server();
-    }*/
-
 }
 class ServerThread extends Thread {
     server server;
@@ -46,7 +40,7 @@ class ServerThread extends Thread {
             // Loop for waiting data
             while (true) {
                 try {
-                    System.out.println("Waiting for connection...");
+                    //System.out.println("Waiting for connection...");
                     String line = "";
                     String all_line = "";
                     // Waiting for data
@@ -63,10 +57,10 @@ class ServerThread extends Thread {
                         server.content.setCaretPosition(0);*/
                     }
                     server.in_server = all_line;
-                    System.out.println(all_line);
+                    //System.out.println(all_line);
                     bufferIn.close();
                     game.repaint();
-                    System.out.println("Connection closed");
+                    //System.out.println("Connection closed");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -76,3 +70,4 @@ class ServerThread extends Thread {
         }
     }
 }
+
