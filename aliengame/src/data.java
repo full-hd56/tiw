@@ -20,6 +20,15 @@ public class data {
         for(int i=0;i<bullet_y.size();i=i+1){
             msg = msg+bullet_y.get(i)+" ";
         }
+        msg = msg+"\n";
+        //------
+        for(int i=0;i<a_x.size();i=i+1){
+            msg = msg+a_x.get(i)+" ";
+        }
+        msg = msg+"\n";
+        for(int i=0;i<a_y.size();i=i+1){
+            msg = msg+a_y.get(i)+" ";
+        }
         for(int i=0;i<ip.length;i=i+1){
             client_send.send(ip[i], 40002, msg);
         }
