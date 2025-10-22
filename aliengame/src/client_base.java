@@ -19,4 +19,3 @@ public class client_base {
         }
     }
 }
-
