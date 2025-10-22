@@ -25,6 +25,12 @@ public class game_panel extends JPanel  implements MouseListener {
     Image ammo = Toolkit.getDefaultToolkit()
             .createImage(System.getProperty("user.dir") +
                     File.separator + "bullet.png");
+    Image alien = Toolkit.getDefaultToolkit()
+            .createImage(System.getProperty("user.dir") +
+                    File.separator + "alien1.png");
+    Image end = Toolkit.getDefaultToolkit()
+            .createImage(System.getProperty("user.dir") +
+                    File.separator + "end.png");
 
     int my_position;
     String ip_server;
@@ -57,22 +63,51 @@ public class game_panel extends JPanel  implements MouseListener {
         g.drawImage(space_ship_4,getWidth() / 2 - 25,getHeight() / 2 - 100,60,60,this);
 
         String server_info_b = server.get_info();
-        if(server_info_b!=""){
-            String[] bxy =  server_info_b.split("\n");
+        System.out.println("server_info_b =  "+server_info_b);
+        if(!server_info_b.equals("\n\n\n\n")){
+            String[] bxy_Axy =  server_info_b.split("\n");
             // System.out.println(bxy.length);
-            if(bxy.length==2){
-                String[] bxs = bxy[0].split(" ");
-                String[] bys = bxy[1].split(" ");
-                int[] bx = new int[bxs.length];
-                int[] by = new int[bys.length];
-                for(int i=0;i<bxs.length;i=i+1){
-                    bx[i]=Integer.parseInt(bxs[i]);
-                    by[i]=Integer.parseInt(bys[i]);
+            if(bxy_Axy.length==4){
+                String[] bxs = bxy_Axy[0].split(" ");
+                String[] bys = bxy_Axy[1].split(" ");
+                String[] axs = bxy_Axy[2].split(" ");
+                String[] ays = bxy_Axy[3].split(" ");
+                if(bxs[0] != "" && axs[0] != ""){
+                    int[] bx = new int[bxs.length];
+                    int[] by = new int[bys.length];
+                    int[] ax = new int[axs.length];
+                    int[] ay = new int[ays.length];
+                    //int[] ax = new int[bxs.length];
+                    for(int i=0;i<bxs.length;i=i+1){
+                        bx[i]=Integer.parseInt(bxs[i]);
+                        by[i]=Integer.parseInt(bys[i]);
+                    }
+                    for(int i=0;i<axs.length;i=i+1){
+                        ax[i]=Integer.parseInt(axs[i]);
+                        ay[i]=Integer.parseInt(ays[i]);
+                    }
+                    for(int i=0;i<bx.length;i=i+1){
+                        g.drawImage(ammo, bx[i], by[i],30,30,this);
+                    }
+                    for(int i=0;i<ax.length;i=i+1){
+                        g.drawImage(alien, ax[i], ay[i],80,80,this);
+                    }
                 }
-                for(int i=0;i<bx.length;i=i+1){
-                    g.drawImage(ammo, bx[i], by[i],30,30,this);
+                else if(bxs[0] == "" && axs[0] != ""){
+                    int[] ax = new int[axs.length];
+                    int[] ay = new int[ays.length];
+                    for(int i=0;i<axs.length;i=i+1){
+                        ax[i]=Integer.parseInt(axs[i]);
+                        ay[i]=Integer.parseInt(ays[i]);
+                    }
+                    for(int i=0;i<ax.length;i=i+1){
+                        g.drawImage(alien, ax[i], ay[i],80,80,this);
+                    }
                 }
             }
+        }
+        if(server_info_b.equals("end\n")) {
+            g.drawImage(end, (1067+200)/2, (600+200)/2, 200,200,this);
         }
 
     }
@@ -99,30 +134,17 @@ public class game_panel extends JPanel  implements MouseListener {
             client.send(ip_server, 40001,str);
         }
         else {}
-
     }
-
     @Override
     public void mousePressed(MouseEvent e) {
-
     }
-
     @Override
     public void mouseReleased(MouseEvent e) {
-
     }
-
     @Override
     public void mouseEntered(MouseEvent e) {
-
     }
-
     @Override
     public void mouseExited(MouseEvent e) {
-
     }
-
-
-
-
 }
